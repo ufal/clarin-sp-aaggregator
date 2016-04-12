@@ -13,7 +13,7 @@ function request($url, $payload) {
     return $exit == 0;
 }
 
-$seen_names = array();
+$idps = array();
 $assertion_count = 0;
 $assertion_count_name = "Shib-Assertion-Count";
 //different name in some envs
@@ -23,6 +23,10 @@ if(getenv($assertion_count_name)){
     $assertion_count = (int)getenv($assertion_count_name);
 }else if(getenv($assertion_count_name_upper)){
     $assertion_count = (int)getenv($assertion_count_name_upper);
+}else{
+    http_response_code(400);
+    echo("$assertion_count_name not fount");
+    exit;
 }
 $assertion_link_attr_name = "Shib-Assertion-"; 
 //different name in some envs
@@ -47,11 +51,16 @@ for($i=$assertion_count; $i > 0; $i--){
         //TODO add a timeout
         $xml = simplexml_load_file($assertion_link);
         $idp = (string)$xml->xpath('//*[local-name()="Issuer"]')[0];
-        foreach($xml->xpath('//*[local-name()="Attribute"]/@Name') as $name){
-            array_push($seen_names, (string)$name);
+        if(!array_key_exists($idp, $idps)){
+            $idps[$idp] = array();
+            $idps[$idp]["seen_attribute_names"] = array();  
         }
-        request($url, json_encode($seen_names));
+        foreach($xml->xpath('//*[local-name()="Attribute"]/@Name') as $name){
+            array_push($idps[$idp]["seen_attribute_names"], (string)$name);
+        }
+        request($url, json_encode($idps));
     }
 }
 header('Location: ' . $_GET['return'], true, 302);
+exit;
 ?>
