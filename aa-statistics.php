@@ -1,6 +1,6 @@
 <?php
 //set this to the collector
-$url='https://ufal-point-dev.ms.mff.cuni.cz/attrStatsCollect';
+$url='https://clarin-aa.ms.mff.cuni.cz/';
 
 function request($url, $payload) {
     #$cmd = "curl -X POST -H 'Content-Type: application/json'";
