@@ -17,6 +17,9 @@ Currently send means GET `$url?data=$payload` where `$payload=base64_encode(json
 ```
 
 ##shibboleth2.xml
+You'll find comprehensive explanations of the following in 
+[NativeSPAssertionExport](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAssertionExport)
+
 * SPConfig->RequestMapper[type="XML"]->RequestMap->Host set attribute `exportAssertion="true"`
 * SPConfig->ApplicationDefaults set attribute `sessionHook="/php/aa-statistics.php"` (the path to the script)
 * SPConfig->ApplicationDefaults->Sessions set attributes `exportLocation="/GetAssertion"` and `exportACL="127.0.0.1"`
@@ -81,5 +84,3 @@ Please start by reading [Secure Use of the RequestMapper on Apache](https://wiki
     Require valid-user
  </Location>
  ```
-
-[NativeSPAssertionExport](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAssertionExport)
