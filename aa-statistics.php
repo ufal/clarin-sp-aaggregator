@@ -65,7 +65,7 @@ if (!getenvs(
     ))
 {
     http_response_code(400);
-    echo("$assertion_count_name not fount");
+    echo("$assertion_count_name not found");
     exit;
 }
 $assertion_count = (int)$assertion_count;
