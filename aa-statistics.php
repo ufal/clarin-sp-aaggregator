@@ -74,7 +74,8 @@ $assertion_count = (int)$assertion_count;
 // idp that was used to authenicate
 $idp = null;
 // timestamp
-$ts = date("c");
+$dt = new DateTime();
+$ts = $dt->format("Y-m-d\TH:i:s.z\Z");
 
 // obtain the assertions
 // - the env variable can be exposed under different names!
