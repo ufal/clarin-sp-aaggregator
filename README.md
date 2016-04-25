@@ -1,23 +1,20 @@
 # clarin-sp-aaggregator
 The script accesses raw saml assertions as received by the sp, ie. before any mapping or filtering takes place. It cherry picks the attribute names, puts them into an array and sends them together with Issuer (idp entity name) to a collector service.
 
-Currently send means GET `$url?data=$payload` where `$payload=base64_encode(json_encode($o))` where `$o` is a map of idp entity id to array of seen attributes, ie. `$o[$idp]["seen_attribute_names"]` is an array listing received attribute names for `$idp` (entityID). eg.:
+Currently send means issue a GET request to `https://clarin-aa.ms.mff.cuni.cz/aaggreg/v1/got?` with parameters specifying which IdP (identified by entityID) was used to authenticate to which SP (identified by entityID) and which attributes were released eg.:
 ```
-{"https:\/\/cas.cuni.cz\/idp\/shibboleth":
-   {"seen_attribute_names":
-      ["urn:oid:1.3.6.1.4.1.5923.1.1.1.1","urn:oid:1.3.6.1.4.1.5923.1.1.1.5","urn:oid:2.5.4.10",
+      idp=https:\/\/cas.cuni.cz\/idp\/shibboleth
+      attributes=["urn:oid:1.3.6.1.4.1.5923.1.1.1.1","urn:oid:1.3.6.1.4.1.5923.1.1.1.5","urn:oid:2.5.4.10",
       "urn:oid:1.3.6.1.4.1.5923.1.1.1.9","urn:oid:2.5.4.4","urn:oid:2.5.4.42",
       "urn:oid:1.3.6.1.4.1.5923.1.1.1.3","http:\/\/www.mefanet.cz\/mefaperson\/",
       "http:\/\/eduid.cz\/attributes\/commonName#ASCII","urn:oid:2.5.4.3",
       "urn:oid:1.3.6.1.4.1.5923.1.1.1.7","urn:oid:1.2.840.113549.1.9.2","urn:oid:1.3.6.1.4.1.5923.1.1.1.8",
       "urn:oid:1.2.840.113549.1.9.1","urn:oid:1.3.6.1.4.1.5923.1.1.1.10","urn:oid:1.3.6.1.4.1.5923.1.1.1.4",
       "urn:oid:0.9.2342.19200300.100.1.3","urn:oid:1.3.6.1.4.1.25178.1.2.9"]
-    }
-}
 ```
 
 ##shibboleth2.xml
-You'll find comprehensive explanations of the following in 
+You'll find the detailed description at 
 [NativeSPAssertionExport](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPAssertionExport)
 
 * SPConfig->RequestMapper[type="XML"]->RequestMap->Host set attribute `exportAssertion="true"`
