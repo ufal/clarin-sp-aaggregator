@@ -93,10 +93,10 @@ for ($i=$assertion_count; 0 < $i; --$i)
     
     if(!empty($assertion_link))
     {
-        $assertion_link = str_replace("https://" . getenv("SERVER_NAME"), "https://localhost", $assertion_link);
+        $assertion_link = str_replace("https://" . getenv("SERVER_NAME"), "https://127.0.0.1", $assertion_link);
         //TODO add a timeout
         $xml = simplexml_load_file($assertion_link);
-        echo $xml->asXML()."=====\n\n";
+        // echo $xml->asXML()."=====\n\n";
         $idp = (string)$xml->xpath('//*[local-name()="Issuer"]')[0];
         if (!array_key_exists($idp, $idps)) 
         {
