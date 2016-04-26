@@ -83,3 +83,9 @@ Please start by reading [Secure Use of the RequestMapper on Apache](https://wiki
     Require valid-user
  </Location>
  ```
+ 
+# Issues
+
+## AuthType shibboleth configured without corresponding module
+
+See http://serverfault.com/questions/762292/authtype-shibboleth-configured-without-corresponding-module
