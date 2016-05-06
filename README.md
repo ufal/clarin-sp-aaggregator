@@ -83,7 +83,10 @@ Please start by reading [Secure Use of the RequestMapper on Apache](https://wiki
     Require valid-user
  </Location>
  ```
- 
+# js only version
+If you can not use the above solution, use `aaggr.js` as a last resort. It is meant to be included in a page where users end after the session was initiated. It fetches the session attributes from /Shibboleth.sso/Session. Set spEntityID to your entityId and correct the shibbolethSessionUrl if neccessary.
+
+
 # Issues
 
 ## AuthType shibboleth configured without corresponding module
