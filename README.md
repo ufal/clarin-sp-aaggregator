@@ -61,6 +61,9 @@ e.g.:
 
 ```
 
+## aa-statistics.php
+review the variables at the begging of the file. There is the aggregator backend url and, entity id of your sp.
+
 ##web servers
 make sure the shibboleth headers are present, ie. enforce existing session.
 

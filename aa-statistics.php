@@ -13,10 +13,12 @@ header('Location: ' . $_GET['return'], true, 302);
 // by lindat-dev team (ok, jm)
 //
 
-
+//====== CONFIGURATION ======
 // REST api of the aggregator
 $aggregator_url='https://clarin-aa.ms.mff.cuni.cz/aaggreg/v1/got';
+//your SP entity id
 $sp='unknown';
+//====== /CONFIGURATION ======
 
 
 /**
@@ -106,7 +108,9 @@ for ($i=$assertion_count; 0 < $i; --$i)
         {
             array_push($idps[$idp], (string)$name);
         }
-        $sp = (string)$xml->xpath('//@SPNameQualifier')[0];
+        // AudienceRestriction/Audience and NameID/@SPNameQualifier usually
+        // have the value of spEntityId, it's not guaranteed though.
+        //$sp = (string)$xml->xpath('//@SPNameQualifier')[0];
     }
 }
 
