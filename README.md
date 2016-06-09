@@ -103,3 +103,7 @@ You can verify what it sends by authenticating to your SP and accessing /Shibbol
 ## AuthType shibboleth configured without corresponding module
 
 See http://serverfault.com/questions/762292/authtype-shibboleth-configured-without-corresponding-module
+
+## ACL localhost with application overrides 
+
+Put ip of the SP to ACL and use the whole hostname to get assertions.
