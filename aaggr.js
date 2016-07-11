@@ -9,7 +9,7 @@ jQuery.get(shibbolethSessionUrl).
        var idp = session.find("strong:contains('Identity Provider:')")[0].nextSibling.nodeValue.trim();
        var attrs = session.find("u:contains('Attributes')").nextAll().map(function(index, el){ return encodeURIComponent(el.innerHTML)}).get();
        if(idp){
-            var ts = Date("c");
+            var ts = new Date().toISOString();
             attributes_encoded = "attributes[]=" + attrs.join("&attributes[]=");
             var logUrl = aggregator_url + '?idp=' + idp + '&sp=' + spEntityID + '&timestamp=' + ts + '&' + attributes_encoded + '&source=js_aaggr'; 
             jQuery.get(logUrl).done(function(){
