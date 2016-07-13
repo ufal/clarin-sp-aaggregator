@@ -63,7 +63,7 @@ An example shibboleth2.xml:
  42 
 ```
 
-**Note:** In case you copy&paste from the above example, change the `<Host name` and `<ApplicationDefaults entityID` to values valid for your SP.
+**Note:** In case you copy&paste from the example above, do **not** forget to change the `<Host name` and `<ApplicationDefaults entityID` to values valid for your SP.
 
 
 ## aa-statistics.php
