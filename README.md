@@ -27,7 +27,7 @@ You'll find the detailed description at
 * SPConfig->ApplicationDefaults set attribute `sessionHook="/php/aa-statistics.php"` (the path to the script)
 * SPConfig->ApplicationDefaults->Sessions set attributes `exportLocation="/GetAssertion"` and `exportACL="127.0.0.1"`
  
-e.g.:
+An example shibboleth2.xml:
 ```
   1 <SPConfig xmlns="urn:mace:shibboleth:2.0:native:sp:config"
   2     xmlns:conf="urn:mace:shibboleth:2.0:native:sp:config"
@@ -61,9 +61,10 @@ e.g.:
  40                   exportLocation="/GetAssertion"
  41                   exportACL="127.0.0.1">
  42 
-
-
 ```
+
+**Note:** In case you copy&paste from the above example, change the `<Host name` and `<ApplicationDefaults entityID` to values valid for your SP.
+
 
 ## aa-statistics.php
 
