@@ -2,7 +2,7 @@
 
 # CLARIN Attribute Aggregator SP script
 
-`This project requires Shibboleth SP version 2.5+ and the php script php 5.4+`.
+`This project requires Shibboleth SP version 2.5+, php 5.4+ and curl`.
 
 The script accesses raw SAML assertions as received by the SP ie., before any mapping or filtering takes place. It cherry picks the attribute names, puts them into an array and sends them together with the Issuer (IdP entity name) to a collector service.
 
@@ -110,3 +110,7 @@ See http://serverfault.com/questions/762292/authtype-shibboleth-configured-witho
 ## ACL localhost with application overrides 
 
 Put ip of the SP to ACL and use the whole hostname to get assertions.
+
+## Everything works but I do not see entries in the aaggregator
+
+Check your timezone!
