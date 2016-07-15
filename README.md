@@ -1,6 +1,8 @@
-## `Store all the original configuration files so you can revert easily!`
+### `Store all the original configuration files so you can revert easily!`
 
 # CLARIN Attribute Aggregator SP script
+
+`This project requires Shibboleth SP version 2.5+`.
 
 The script accesses raw SAML assertions as received by the SP ie., before any mapping or filtering takes place. It cherry picks the attribute names, puts them into an array and sends them together with the Issuer (IdP entity name) to a collector service.
 
