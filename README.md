@@ -2,7 +2,7 @@
 
 # CLARIN Attribute Aggregator SP script
 
-`This project requires Shibboleth SP version 2.5+`.
+`This project requires Shibboleth SP version 2.5+ and the php script php 5.4+`.
 
 The script accesses raw SAML assertions as received by the SP ie., before any mapping or filtering takes place. It cherry picks the attribute names, puts them into an array and sends them together with the Issuer (IdP entity name) to a collector service.
 
