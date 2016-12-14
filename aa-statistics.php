@@ -95,7 +95,7 @@ for ($i=$assertion_count; 0 < $i; --$i)
     
     if(!empty($assertion_link))
     {
-        $assertion_link = str_replace("https://" . getenv("SERVER_NAME"), "https://127.0.0.1", $assertion_link);
+        //$assertion_link = str_replace("https://" . getenv("SERVER_NAME"), "https://127.0.0.1", $assertion_link);
         //TODO add a timeout
         $xml = simplexml_load_file($assertion_link);
         // echo $xml->asXML()."=====\n\n";
