@@ -99,7 +99,12 @@ for ($i=$assertion_count; 0 < $i; --$i)
         //TODO add a timeout
         $xml = simplexml_load_file($assertion_link);
         // echo $xml->asXML()."=====\n\n";
-        $idp = (string)$xml->xpath('//*[local-name()="Issuer"]')[0];
+        try{
+            $idp = (string)$xml->xpath('//*[local-name()="Issuer"]')[0];
+        } catch(Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\nProbably no Issuer or xml.\n";
+            exit;
+        }
         if (!array_key_exists($idp, $idps)) 
         {
             $idps[$idp] = array();
